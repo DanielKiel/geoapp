@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+import Galleries from './views/Galleries.vue'
+import GalleryDetail from './views/GalleryDetail.vue'
+import Minerals from './views/Minerals.vue'
 
 Vue.use(Router)
 
@@ -12,6 +15,22 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home
+    },
+    {
+        path: '/galleries',
+        name: 'galleries',
+        component: Galleries
+    },
+    {
+        path: '/gallery/:id/:title',
+        name: 'gallery',
+        component: GalleryDetail,
+        props: true
+    },
+    {
+        path: '/minerals',
+        name: 'minerals',
+        component: Minerals
     },
     {
       path: '/about',

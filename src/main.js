@@ -1,10 +1,12 @@
+const prodEnv = require('../.env.json')
+
 window.AppConfig = {
     api: {
-        url: "https://geoarchiv_cms.dev"
+        url: prodEnv.baseUrl
     }
 }
 
-const prodEnv = require('../.env.json')
+window.axios = require('axios')
 
 import Vue from 'vue'
 import App from './App.vue'
@@ -16,12 +18,27 @@ import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
+import VueScroolTo from 'vue-scrollto'
+
 import * as VueGoogleMaps from 'vue2-google-maps'
 
-window.axios = require('axios')
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faEye } from '@fortawesome/free-solid-svg-icons'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
+import { faList } from '@fortawesome/free-solid-svg-icons'
+import { faTable } from '@fortawesome/free-solid-svg-icons'
+import { faCog } from '@fortawesome/free-solid-svg-icons'
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'
+import { faTimesCircle, faArrowUp } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
+library.add([faEye, faSearch, faWindowClose, faList, faTable, faCog, faSpinner,faTimesCircle,faArrowUp])
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.use(BootstrapVue)
+Vue.use(VueScroolTo)
 
 Vue.use(VueGoogleMaps, {
     load: {
